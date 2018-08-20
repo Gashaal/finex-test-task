@@ -10,14 +10,18 @@ const Wrapper = styled.div`
 
 const SearchIcon = styled.img`
   height: 26px;
-  margin-right: 10px;Ò
+  margin-right: 10px;
 `;
 
-export default () => {
+export default (props) => {
+  const changeHandler = (event) => {
+    props.filter(event.target.value);
+  };
+
   return (
     <Wrapper>
       <SearchIcon src={searchIcon}/>
-      <Input type="search"/>
+      <Input type="search" onChange={changeHandler}/>
     </Wrapper>
   )
 }

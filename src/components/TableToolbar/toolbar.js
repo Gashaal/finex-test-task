@@ -17,7 +17,7 @@ export default (props) => {
   return (
     <Wrapper>
       <TableTitle>{props.title}</TableTitle>
-      <Search/>
+      <Search filter={props.filter}/>
     </Wrapper>
   )
 }
