@@ -15,7 +15,7 @@ const Icon = styled.img`
 
 export default (props) => {
   return (
-    <Button>
+    <Button onClick={props.clickHandler}>
       <Icon src={props.icon}/>
     </Button>
   )
