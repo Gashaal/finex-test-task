@@ -9,7 +9,10 @@ export default styled.input`
   font-size: 14px;
   outline: none;
   
+  border-bottom: ${props => props.error ? '2px solid red' : '1px solid grey'};
+  
   &:focus {
-    border-bottom: 2px solid #0164f9;
+    border-bottom: 2px solid ${props => props.error ? 'red' : '#0164f9 '};
   }
 `;
+
