@@ -1,21 +1,55 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { connect } from 'react-redux';
 import './App.css';
+import TableToolbar from './components/TableToolbar';
+import Table from './components/Table';
+import Chart from './components/Chart';
+import {sort, edit, cancel, filter, change, save, validate, toggleCurrency} from './actions';
+
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+        <TableToolbar title="Каталог" filter={this.props.filter}/>
+        <Table {...this.props}/>
+        <Chart data={this.props.filteredData}/>
       </div>
     );
   }
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {...state};
+}
+
+function mapDispatchToProps (dispatch) {
+  return {
+    sort: (orderField) => {
+      dispatch(sort(orderField));
+    },
+    edit: (id) => {
+      dispatch(edit(id));
+    },
+    cancel: (id) => {
+      dispatch(cancel(id));
+    },
+    save: (id) => {
+      dispatch(save(id));
+    },
+    change: (id, field, value) => {
+      dispatch(change(id, field, value));
+    },
+    validate: (id, field, value) => {
+      dispatch(validate(id, field, value));
+    },
+    toggleCurrency: () => {
+      dispatch(toggleCurrency());
+    },
+    filter: (value) => {
+      dispatch(filter(value));
+    },
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
