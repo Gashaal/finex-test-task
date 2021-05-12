@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "http://gitname.github.io/finex-test-task",
   "dependencies": {
-    "chart.js": "^2.7.2",
+    "chart.js": "^2.9.4",
     "react": "^16.4.2",
     "react-chartjs-2": "^2.7.4",
     "react-dom": "^16.4.2",
